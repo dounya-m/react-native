@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { AsyncPaginate } from 'react-select-async-paginate'
 import {GEO_API_URL, geoApiOption} from '../../api/api'
 
-const search = ({onSearchChange}) => {
+const SearchCity = ({onSearchChange}) => {
     const [search, setSearch] = useState(null)
 
     const loadOptions = (inputValue) => {
@@ -12,7 +12,16 @@ const search = ({onSearchChange}) => {
             geoApiOption
             )
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => {
+            return{
+                options: response.data.map((city)=>{
+                    return{
+                        value: `${city.latitude} ${city.longtide}` ,
+                        label: `${city.name}, ${city.countryCode}`,
+                    }
+                })
+            }
+        })
         .catch(err => console.error(err));
     }
 
@@ -32,4 +41,4 @@ const search = ({onSearchChange}) => {
     )
 }
 
-export default search
+export default SearchCity

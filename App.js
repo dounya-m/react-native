@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import  Search  from './components/search/Search';
-import search from './components/search/Search';
+import  SearchCity  from './components/search/Searchcity';
+import CurenWeather from './components/weather/CurenWeather'
 
 
 export default function App() {
@@ -21,7 +21,8 @@ export default function App() {
     <View style={styles.container}>
       <h1 className=''>{time}</h1>
       <Text>huihuihui</Text>
-      <Search onSearchChange={handleOnSearchChange} />
+      <SearchCity onSearchChange={handleOnSearchChange} />
+      <CurenWeather />
     </View>
   );
 }
